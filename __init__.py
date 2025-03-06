@@ -3,12 +3,12 @@
 # the full copyright notices and license terms.
 from trytond.pool import Pool
 
-from .purchase import Configuration, ConfigurationPurchaseMethod, Purchase
+from .purchase import Configuration, ConfigurationPurchaseCreate, Purchase
 
 
 def register():
     Pool.register(
         Configuration,
-        ConfigurationPurchaseMethod,
+        ConfigurationPurchaseCreate,
         Purchase,
         module='purchase_create_shipment', type_='model')

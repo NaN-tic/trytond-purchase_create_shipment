@@ -1,4 +1,5 @@
-from trytond.model import fields
+from trytond.model import ModelSQL, fields
+from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
 
 create_shipment_on_confirm = fields.Boolean("Create Shipment on Confirm")
@@ -13,7 +14,7 @@ class Configuration(metaclass=PoolMeta):
     def multivalue_model(cls, field):
         pool = Pool()
         if field == 'create_shipment_on_confirm':
-            return pool.get('purchase.configuration.purchase_method')
+            return pool.get('purchase.configuration.create_shipment_on_confirm')
         return super(Configuration, cls).multivalue_model(field)
 
     @classmethod
@@ -22,8 +23,9 @@ class Configuration(metaclass=PoolMeta):
             'purchase_invoice_method').default_purchase_invoice_method()
 
 
-class ConfigurationPurchaseMethod(metaclass=PoolMeta):
-    __name__ = 'purchase.configuration.purchase_method'
+class ConfigurationPurchaseCreate(ModelSQL, CompanyValueMixin   ):
+    'Create Purchase Configuration '
+    __name__ = 'purchase.configuration.create_shipment_on_confirm'
 
     create_shipment_on_confirm = create_shipment_on_confirm
 
