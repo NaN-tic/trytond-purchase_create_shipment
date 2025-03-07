@@ -23,7 +23,7 @@ class Configuration(metaclass=PoolMeta):
             'purchase_invoice_method').default_purchase_invoice_method()
 
 
-class ConfigurationPurchaseCreate(ModelSQL, CompanyValueMixin   ):
+class ConfigurationPurchaseCreate(ModelSQL, CompanyValueMixin):
     'Create Purchase Configuration '
     __name__ = 'purchase.configuration.create_shipment_on_confirm'
 
