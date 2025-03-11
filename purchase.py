@@ -44,6 +44,9 @@ class Purchase(metaclass=PoolMeta):
         if not Configuration(1).create_shipment_on_confirm:
             return moves
 
+        if not moves:
+            return moves
+
         shipment = None
         if move_type == 'in':
             shipment = self._get_shipment()
