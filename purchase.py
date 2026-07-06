@@ -19,8 +19,7 @@ class Configuration(metaclass=PoolMeta):
 
     @classmethod
     def default_create_shipment_on_confirm(cls, **pattern):
-        return cls.multivalue_model(
-            'purchase_invoice_method').default_purchase_invoice_method()
+        return False
 
 
 class ConfigurationPurchaseCreate(ModelSQL, CompanyValueMixin   ):
